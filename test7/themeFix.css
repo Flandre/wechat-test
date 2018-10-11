@@ -1,0 +1,41 @@
+.ffiv-container {
+	padding: 10px;
+}
+.ffiv-container .tooltip-item--name-category {
+	color: #ddd;
+}
+.ffiv-container .ff14-content-box-block {
+	color: #ddd;
+}
+.ffiv-container .ff14-content-box-block hr {
+	margin-bottom: 5px;
+}
+.ffiv-container .ff14-content-box-block hr.ff14-content-box-block---hr {
+	margin-top: 5px;
+}
+.ffiv-container .ff14-content-box-block p {
+	margin-bottom: 0;
+}
+.ffiv-container .ff14-content-box-block ul {
+	padding-left: 0;
+	margin: 0;
+}
+.ffiv-container .gathering-block .title {
+	color: #ddd;
+}
+.ffiv-container .table-responsive th {
+	color: #efefef;
+}
+.ffiv-container .table-responsive th,
+.ffiv-container .table-responsive td {
+	border-color: #3c3c3c;
+}
+.ffiv-container .table-responsive td {
+	background: #232323;
+}
+.ffiv-container .table-responsive .wikitable {
+	margin-top: 0;
+}
+.ffiv-container .table-responsive .wikitable td{
+	color: #efefef;
+}

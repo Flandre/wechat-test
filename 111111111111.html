@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    *{padding: 0; margin: 0;}
+    .bg{position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: no-repeat; background-size: 100% 100%;overflow: hidden}
+    #myCanvas{transition: 0.5s;}
+    .cls{opacity: 0;}
+  </style>
+</head>
+<body>
+<div class="bg" id="bgCont">
+  <canvas id="myCanvas"></canvas>
+</div>
+<script>
+  var canvas = document.getElementById('myCanvas'), ctx = canvas.getContext('2d');
+  var x1, y1, x2, y2, r = 30, timeout, totimes = 100, step = 30;
+  canvas.width = document.getElementById('bgCont').clientWidth;
+  canvas.height = document.getElementById('bgCont').clientHeight;
+  var oImg = new Image();
+  oImg.src = 'http://gx.people.com.cn/NMediaFile/2013/0315/LOCAL201303150942000190943288602.jpg';
+  oImg.onload = function(){
+    //ctx.drawImage(oImg, 0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    setTimeout(function(){
+      document.getElementById('bgCont').style.backgroundImage = "url('http://gx.people.com.cn/NMediaFile/2013/0315/LOCAL201303150942000190943288602.jpg')";
+    }, 200);
+    tapClip()
+  };
+  function tapClip(){
+    var hastouch = 'ontouchstart' in window ? true : false,
+      tapstart = hastouch ? 'touchstart' : 'mousedown',
+      tapmove = hastouch ? 'touchmove' : 'mousemove',
+      tapend = hastouch ? 'touchend' : 'mouseup';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = r*2;
+    ctx.globalCompositeOperation = 'destination-out';
+    canvas.addEventListener(tapstart, function(e){
+      e.preventDefault();
+      x1 = hastouch ? e.targetTouches[0].pageX : e.clientX - canvas.offsetLeft;
+      y1 = hastouch ? e.targetTouches[0].pageY : e.clientY - canvas.offsetTop;
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(x1, y1, 1, 0, 2*Math.PI);
+      ctx.fill();
+      ctx.restore();
+      canvas.addEventListener(tapmove, tapmoveHandler);
+      canvas.addEventListener(tapend, function(){
+        canvas.removeEventListener(tapmove, tapmoveHandler);
+        timeout = setTimeout(function(){
+          var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          var dd = 0;
+          for(var x = 0; x < imgData.width; x += step){
+            for(var y = 0; y < imgData.height; y += step){
+              var i = (y * imgData.width + x) * 4;
+              if(imgData.data[i + 3] > 0){
+                dd ++;
+              }
+            }
+          }
+          if(dd / (imgData.width * imgData.height / (step * step)) < 0.4){
+            //alert(1);
+            canvas.className = "cls";
+          }
+        }, totimes)
+      });
+      function tapmoveHandler(e){
+        e.preventDefault();
+        console.log(e)
+        x2 = hastouch ? e.targetTouches[0].pageX : e.clientX - canvas.offsetLeft;
+        y2 = hastouch ? e.targetTouches[0].pageY : e.clientY - canvas.offsetTop;
+        ctx.save();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+        ctx.restore();
+        x1 = x2;
+        y1 = y2;
+      }
+    })
+  }
+</script>
+</body>
+</html>

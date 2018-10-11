@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "test9/index",
+    "test8/index",
+    "test6/index",
+    "test5/index",
+    "test3/index",
+    "test2/index",
+    "test/index"
+  ],
+  "window":{    
+ 	"navigationBarBackgroundColor":"#74c060",
+    "navigationBarTitleStyle":"black",
+    "navigationBarTitleText": "canvas",
+    "statusBarTextStyle":"black",
+    "backgroundColor":"#808080",
+    "backgroundTextStyle":"light"
+  }
+}

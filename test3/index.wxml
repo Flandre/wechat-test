@@ -1,0 +1,14 @@
+<view class="scratch-container">
+  <image src="img/card.png" class="card" style="width: 640rpx;height: 712rpx;"></image>
+  <image src="{{luckdrawImg}}" class="luckdraw-img" style="width: 450rpx; height: 200rpx;"></image>
+  <canvas
+    canvas-id="luckdraw"
+    class="canvas"
+    style="width: 450rpx; height: 200rpx;"
+    bindtouchstart="touchStart"
+    bindtouchmove="touchMove"
+    bindtouchend="touchEnd"
+    disable-scroll="true"
+  />
+</view>
+<button bindtap="luckdraw">重绘(重抽)</button>

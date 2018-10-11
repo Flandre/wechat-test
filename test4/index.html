@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button logs-type="1">1</button>
+<button logs-type="2_3">2</button>
+<button logs-type="3">3</button>
+<button logs-type="4_5">4</button>
+<button logs-type="6_7">5</button>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $('button').each(function(index, ele){
+    $(ele).on('click', function(e) {
+      var lt = $(this).attr('logs-type'),
+        sp = lt.split('_'),
+        count = sp.length
+      var arrlist = []
+      sp.forEach(function(val){
+        $.getJSON('http://localhost:8233/' + val, function(d){
+          if(d && d.msg){
+            d.msg.forEach(function(val){
+              arrlist.push(val)
+            })
+          }
+          checkCallback()
+        }).fail(function(){
+          checkCallback()
+        })
+      })
+      function checkCallback() {
+        count --;
+        if(!count) {
+          if(arrlist.length) {
+            alert(arrlist.join(','))
+          } else {
+            alert('no data');
+          }
+        }
+      }
+    })
+  })
+</script>
+</body>
+</html>

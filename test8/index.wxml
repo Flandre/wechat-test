@@ -1,0 +1,6 @@
+<view class="authorize">
+  <button bindtap="tapScan">扫码</button>
+  <text wx:for="{{codeData}}" wx:for-item="codeItem" wx:for-index="idx">
+    {{codeItem.key}}: {{codeItem.val}}
+  </text>
+</view>

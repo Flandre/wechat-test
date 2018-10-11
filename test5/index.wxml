@@ -1,0 +1,15 @@
+<view class="authorize">
+  <view wx:for="{{tabTitle}}" wx:for-item="tabTitle"  wx:for-index="idx" bindtap="tapTitle" data-index="{{idx}}">
+    <view wx:if="{{idx==showIndex}}" class="highlight">
+      {{tabTitle}}
+    </view>
+    <view wx:else>
+      {{tabTitle}}
+    </view>
+  </view>
+  <view wx:for="{{listDetail}}" wx:for-item="tabMain" wx:for-index="idx">
+    <view wx:if="{{idx==showIndex}}">
+      {{tabMain}}
+    </view>
+  </view>
+</view>

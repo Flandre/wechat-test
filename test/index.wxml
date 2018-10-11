@@ -1,0 +1,4 @@
+<!--rotate.wxml -->
+<canvas canvas-id="ct"  class="canvas" style="width: 594rpx; height: 370rpx;"/>
+<button bindtap="tapLight">变灯，只能红灯变绿灯</button>
+<button bindtap="tapH">原地复活</button>

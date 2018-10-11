@@ -1,0 +1,24 @@
+
+.scratch-container {
+	width: 750rpx;
+	height: 750rpx;
+	background: #fdd;
+	position: relative;
+}
+.card {
+	position: absolute;
+	top: 0;
+	left: 55rpx;
+}
+.luckdraw-img{
+	position: absolute;
+	top: 400rpx;
+	left: 150rpx;
+}
+.canvas{
+	position: absolute;
+	top: 400rpx;
+	left: 150rpx;
+	width:750rpx;
+	height:750rpx;
+}
