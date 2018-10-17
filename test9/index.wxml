@@ -1,5 +1,5 @@
 <view class="authorize">
-  <input bindconfirm="createQR" style="border: 1px solid"/>
+  <input bindconfirm="createQR" style="border: 1px solid; height: 30rpx; min-height:30rpx;line-height:30rpx!important;font-size:20rpx"/>
   <button bindtap="output">保存本地</button>
   <canvas style="width: 400px; height: 500px;" canvas-id="cvs"></canvas>
 </view>

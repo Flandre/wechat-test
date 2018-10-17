@@ -9,11 +9,16 @@ Page({
 
   },
   createQR: function(e) {
-    drawQrcode({
-      width: 200,
-      height: 200,
-      canvasId: 'cvs',
-      text: e.detail.value
+    wx.getSystemInfo({
+      success: function (res) {
+        let pr = 750 / res.windowWidth
+        drawQrcode({
+          width: 200 / pr,
+          height: 200 / pr,
+          canvasId: 'cvs',
+          text: e.detail.value
+        })
+      },
     })
 
   },
