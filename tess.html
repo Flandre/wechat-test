@@ -3,26 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <style>
+    .box {
+      box-sizing: border-box;
+      /*padding: 100px;*/
+      float: left;
+      margin-left: 100px;
+    }
+    .box1 {
+      background: #f00;
+    }
+    .box2 {
+      background: #0f0;
+    }
+    .box3 {
+      background: #00f;
+    }
+  </style>
 </head>
 <body>
 
+<div class="box box1"></div>
+<div class="box box2"></div>
+<div class="box box3"></div>
 
 </body>
 <script>
-  var a
-  function fun(){
-    console.log(a)
-  }
-  window.onload = function(){
-    a = 'xxx'
-    console.log('---onload---')
-    fun()
-  }
-  console.log('--------')
-  fun()
-  setTimeout(function(){
-    console.log('---timeout---')
-    fun()
-  }, 1000)
+  Array.prototype.forEach.call(document.querySelectorAll('.box'), $ele => $ele.onclick = e => console.log(e.currentTarget.getBoundingClientRect()))
 </script>
 </html>
