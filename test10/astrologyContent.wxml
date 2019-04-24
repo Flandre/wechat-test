@@ -1,0 +1,24 @@
+<view class='body'>
+  <image src='{{imagebgUrl}}' class='bg'></image>
+
+  <view class='topView'>
+    <!-- 进度球 -->
+    <view class="avatar-box">
+      <view class="water-group {{rank}}">
+        <view class="water water1"></view>
+        <view class="water water2"></view>
+        <view class="water water3"></view>
+      </view>
+    </view>
+    <text class='toptext'>{{model.name}}</text>
+    <text class='topper'>{{model.suitability}}</text>
+    <text class='toptitle'>{{model.subTitle}}</text>
+  </view>
+
+  <view class='listbg'>
+      <view class='bottomcell' wx:for='{{model.detail}}' wx:key='index'>
+          <text class='celltitle'>{{model.detail[index].zPlanetLocation}} {{model.detail[index].type}} {{model.detail[index].aPlanetLocation}}</text>
+          <text class='cellcontont'>{{model.detail[index].detail}}</text>
+      </view>
+    </view>
+</view>
